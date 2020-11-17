@@ -10,4 +10,6 @@
   <view class="usermotto">
     <text class="user-motto">{{goods_name}}</text>
   </view>
+
 </view>
+

@@ -1,0 +1,3 @@
+<!--pages/page/page.wxml-->
+<button bindtap="denlu">登录</button>
+
