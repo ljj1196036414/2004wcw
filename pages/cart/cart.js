@@ -19,7 +19,7 @@ Page({
   onLoad: function (options) {
     let _this=this
     wx.request({
-        url: 'http://jd.2004.com/api/leibiao',
+        url: 'https://www.414shop.top/api/leibiao',
         success (res) {
           console.log(res);
           //setData  定义一个变量

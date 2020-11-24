@@ -15,7 +15,7 @@ Page({
         if (res.code) {
           //发起网络请求
           wx.request({
-            url: 'http://jd.2004.com/api/wxlogin',
+            url: 'https://www.414shop.top/api/wxlogin',
             data: {
               code: res.code
             },

@@ -29,7 +29,7 @@ Page({
      let access_token=wx.getStorageSync('key');
      //console.log(access_token);
      wx.request({
-      url: 'http://jd.2004.com/api/lest',
+      url: 'https://www.414shop.top/api/lest',
       data:{
         goods_id:id,
         access_token:access_token

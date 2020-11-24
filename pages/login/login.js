@@ -38,7 +38,7 @@ Page({
         //获取code
         if(res.code){
           wx.request({
-            url: 'http://jd.2004.com/api/wxlogin?code='+res.code,
+            url: 'https://www.414shop.top/api/wxlogin?code='+res.code,
             method:'post',
             header:{'content-type':'application/json'},
             data:{

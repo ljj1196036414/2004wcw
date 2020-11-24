@@ -25,7 +25,7 @@ Page({
      let _this=this
     _this.getGoodsList();
     wx.request({
-        url: 'http://jd.2004.com/api/leibiao',
+        url: 'https://www.414shop.top/api/leibiao',
         success (res) {
           //console.log(res);
           //setData  定义一个变量
@@ -59,7 +59,7 @@ onReachBottom: function()
   getGoodsList:function(){
       let _this=this
       wx.request({
-        url:'http://jd.2004.com/api/goodslest',
+        url:'https://www.414shop.top/api/goodslest',
         data:{
             page: _this.data.page, //分页  页号
             size: _this.data.pagesize
