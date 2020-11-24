@@ -5,9 +5,11 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    getUserInfo:"微信账号登录",
   },
   denlu:function(e){
+   //console.log(123456);
+    let _this=this
     wx.login({
       success (res) {
         if (res.code) {
@@ -16,7 +18,21 @@ Page({
             url: 'http://jd.2004.com/api/wxlogin',
             data: {
               code: res.code
-            }
+            },
+          
+          success(res){
+           // console.log(res);
+            // console.log(res);
+            wx.setStorageSync('key', res.data.data.token);
+            // let value=wx.getStorageSync('key')
+            // console.log(value);
+            let li=wx.setStorage({
+              key: 'token',
+              success(res){
+                console.log(res);
+              }
+            })  
+          }
           })
         } else {
           console.log('登录失败！' + res.errMsg)

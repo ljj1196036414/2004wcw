@@ -5,14 +5,43 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    background: ['/image/0c930ccc45462cfd.jpg', '/image/1c233f664015b793.jpg', '/image/7c6b2e7a3f12c9bf.jpg','/image/45c9db9bf6cb206d.jpg'],
+    indicatorDots: true,
+    vertical: false,
+    autoplay: false,
+    interval: 2000,
+    duration: 500,
   },
-
+  swipperChange:function(e){
+    let _this=this
+    let current=e.detail.current;
+    _this.setData({
+      current:e.detail.current
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    //console.log(options);
+     let _this = (this);
+     let id = options.goods_id;
+     let access_token=wx.getStorageSync('key');
+     //console.log(access_token);
+     wx.request({
+      url: 'http://jd.2004.com/api/lest',
+      data:{
+        goods_id:id,
+        access_token:access_token
+      },
+      success:function(goods) {
+        //console.log(goods);
+        _this.setData({
+          good:goods.data
+        })
+       
+      }
+  })
   },
 
   /**

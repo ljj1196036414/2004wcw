@@ -1,2 +1,38 @@
 <!--pages/detail/detail.wxml-->
-<text>pages/detail/detail.wxml</text>
+<view class="table">
+    <view class="swiperitem">
+    <swiper  class="swiper" bindchange="swipperChange"
+            autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
+            <block wx:for="{{background}}" wx:key="*this">
+              <swiper-item>
+                <view class="swiper-item {{item}}">
+                  <image src="{{item}}" class="img"></image>
+                </view>
+              </swiper-item>
+            </block>
+          </swiper>
+          <view class="tips">
+              <text>{{current+1}}/{{good.gallery.length}}</text>
+          </view>
+    </view>
+<view class="foreach-ch">商品名称：{{good.goods_name}}</view>
+<view class="foreach-ch">商品价格：{{good.shop_price}}</view>
+<!-- <image src="{{good.goods_img}}" class=""></image> -->
+
+  <view class="button">
+      <view class='tb4 flexct' bindtap='buynow' data-type='1'>加入购物车</view>
+      <view class='tb4 tb5 flexct' bindtap='buynow' data-type='2'>立刻购买</view>
+      <view class="incon">
+        <view class="iconfont icon-icon4"></view>
+        <view class="incon-ch">首页</view>
+     </view>
+     <view  class="incon">
+        <view class="iconfont icon-dianhua"></view>
+        <view class="incon-ch">客服</view>
+    </view>
+    <view  class="incon">
+      <view class="iconfont icon-gouwuche"></view>
+      <view class="incon-ch">购物车</view>
+    </view>
+  </view>
+</view>

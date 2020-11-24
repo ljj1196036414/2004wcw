@@ -1,2 +1,2 @@
 <!--pages/my/my.wxml-->
-<button bindtap="denlu">登录</button>
+<button bindtap="denlu" open-type="getUserInfo" bindgetphonenumber="getPhoneNumber">登录</button>

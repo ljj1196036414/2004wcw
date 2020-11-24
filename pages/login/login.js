@@ -1,37 +1,19 @@
-// pages/cart/cart.js
+// pages/login/login.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    background: ['/image/discount-banner.jpg', '/image/draw-banner.jpg', '/image/nursing-banner.jpg'],
-    indicatorDots: true,
-    vertical: false,
-    autoplay: false,
-    interval: 2000,
-    duration: 500
+
   },
- 
+
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    let _this=this
-    wx.request({
-        url: 'http://jd.2004.com/api/leibiao',
-        success (res) {
-          console.log(res);
-          //setData  定义一个变量
-          _this.setData({
-              list:res.data
-          })  
-        }
-      })
-    _this.setData({
-      swiper:data
-    })
-    },
+
+  },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
@@ -46,6 +28,34 @@ Page({
   onShow: function () {
 
   },
+  //处理登录
+  login:function(e){
+    //获取用户的信息
+    let userInfo=e.detail.userInfo;
+    console.log(userInfo);
+    wx.login({
+      success(res){
+        //获取code
+        if(res.code){
+          wx.request({
+            url: 'http://jd.2004.com/api/wxlogin?code='+res.code,
+            method:'post',
+            header:{'content-type':'application/json'},
+            data:{
+                u:userInfo
+            },
+            success: function(res){
+              console.log(res);
+              // "获取token" + res.data.data.token
+            }
+          })
+        }else{
+          console.log('登录失败'+res.errMsg);
+        }
+      }
+    })
+  },
+  
 
   /**
    * 生命周期函数--监听页面隐藏

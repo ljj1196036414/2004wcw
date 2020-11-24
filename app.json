@@ -1,12 +1,12 @@
 {
   "pages": [
     "pages/index/index",
-    "pages/logs/logs",
     "pages/page/page",
     "pages/my/my",
     "pages/cart/cart",
     "pages/detail/detail",
-    "pages/order/order"
+    "pages/order/order",
+    "pages/login/login"
   ],
   "tabBar": {
     "list": [

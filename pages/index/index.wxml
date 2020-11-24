@@ -1,15 +1,38 @@
-<!--index.wxml-->
-<view class="container">
-  <view class="userinfo">
-    <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
-    <block wx:else>
-      <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
-      <text class="userinfo-nickname">{{userInfo.nickName}}</text>
-    </block>
-  </view>
-  <view class="usermotto">
-    <text class="user-motto">{{goods_name}}</text>
-  </view>
-
+ <view>
+     <view class="swiper">
+          <swiper indicator-dots="{{indicatorDots}}"
+            autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
+            <block wx:for="{{background}}" wx:key="*this">
+              <swiper-item>
+                <view class="swiper-item {{item}}">
+                  <!-- <video controls="controls" path="{{item}}"></video> -->
+                  <image src="{{item}}"></image>
+                </view>
+              </swiper-item>
+            </block>
+          </swiper>
+     </view>
+     <view class="nav">
+        <scroll-view class="scroll-view_H" scroll-x="true" bindscroll="scroll" style="width: 100%">
+          <view id="demo1" class="scroll-view-item_H demo-text-1">科技</view>
+          <view id="demo2"  class="scroll-view-item_H demo-text-2">化妆品</view>
+          <view id="demo3" class="scroll-view-item_H demo-text-3">服装</view>
+          <view id="demo3" class="scroll-view-item_H demo-text-3">能源</view>
+          <view id="demo1" class="scroll-view-item_H demo-text-1">科技</view>
+          <view id="demo2"  class="scroll-view-item_H demo-text-2">化妆品</view>
+          <view id="demo3" class="scroll-view-item_H demo-text-3">服装</view>
+          <view id="demo3" class="scroll-view-item_H demo-text-3">能源</view>
+        </scroll-view>
+      </view>
+     <view wx:for="{{list}}" class="table-indel" catchtap='enterdetail' id="{{list[index].goods_id}}">
+   
+       <view class="table-img">
+          <image class="img" src="{{list[index].goods_img}}"></image>
+       </view>
+       <view class="name">
+          <span class="table-name" >{{list[index].goods_id}}</span>
+          <span class="table-price">$:{{list[index].shop_price}}</span>
+       </view>
+     
+     </view>
 </view>
-

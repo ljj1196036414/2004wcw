@@ -1,74 +1,119 @@
-//index.js
-//获取应用实例
-const app = getApp()
-
+// pages/cart/cart.js
 Page({
+
+  /**
+   * 页面的初始数据
+   */
   data: {
-    motto: 'Hello World',
-    name:'lijunjing',
-    userInfo: {},
-    hasUserInfo: false,
-    canIUse: wx.canIUse('button.open-type.getUserInfo')
+    background: ['/image/discount-banner.jpg', '/image/draw-banner.jpg', '/image/nursing-banner.jpg'],
+    indicatorDots: true,
+    vertical: false,
+    autoplay: false,
+    interval: 2000,
+    duration: 500,
+    list:[],
+    page:1,  //列表 页号
+    pagesize:10, //列表  大小
   },
-  //事件处理函数
-  bindViewTap: function() {
-    wx.navigateTo({
-      url: '../logs/logs'
-    })
-  },
-  onLoad: function () {
-    console.log(this)
-    let _this=this;
-    //发送请求
+ 
+  /**
+   * 生命周期函数--监听页面加载
+   */
+   onLoad: function (options) {
+    let access_token=wx.getStorageSync('key');
+    console.log(access_token);
+     let _this=this
+    _this.getGoodsList();
     wx.request({
-      url: 'http://jd.2004.com/api/test', //仅为示例，并非真实的接口地址
-      data: {
-        x: 'xxx',
-        y: 'yyy'
-      },
-      header: {
-        'content-type': 'application/json' // 默认值
-      },
-      success (res) {
-        console.log(res.data);
-        _this.setData({
-          goods_name:res.data.goods_name
-        })
-      }
-    })
-    if (app.globalData.userInfo) {
-      this.setData({
-        userInfo: app.globalData.userInfo,
-        hasUserInfo: true
-      })
-    } else if (this.data.canIUse){
-      // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
-      // 所以此处加入 callback 以防止这种情况
-      app.userInfoReadyCallback = res => {
-        this.setData({
-          userInfo: res.userInfo,
-          hasUserInfo: true
-        })
-      }
-    } else {
-      // 在没有 open-type=getUserInfo 版本的兼容处理
-      wx.getUserInfo({
-        success: res => {
-          app.globalData.userInfo = res.userInfo
-          this.setData({
-            userInfo: res.userInfo,
-            hasUserInfo: true
-          })
+        url: 'http://jd.2004.com/api/leibiao',
+        success (res) {
+          //console.log(res);
+          //setData  定义一个变量
+          _this.setData({
+              list:res.data
+          })  
         }
       })
-    }
-  },
-  getUserInfo: function(e) {
-    console.log(e)
-    app.globalData.userInfo = e.detail.userInfo
-    this.setData({
-      userInfo: e.detail.userInfo,
-      hasUserInfo: true
+    },
+//触底事件
+onReachBottom: function()
+{
+  //console.log(989304580395)
+  this.data.page++;
+  this.getGoodsList();
+},
+  
+
+  //页面跳转
+  enterdetail:function(e){
+   // console.log(e);
+     let _this=this
+    let id=e.currentTarget.id;
+    wx.navigateTo({
+      url:'/pages/detail/detail?goods_id='+id,
     })
+  },
+
+  
+  //获取商品数据
+  getGoodsList:function(){
+      let _this=this
+      wx.request({
+        url:'http://jd.2004.com/api/goodslest',
+        data:{
+            page: _this.data.page, //分页  页号
+            size: _this.data.pagesize
+        },
+        header:{'content-type':'application/json'},
+        success(res){
+         console.log(res);
+          let new_list= _this.data.list.concat(res.data.data.data.data)
+          //console.log(new_list);
+          _this.setData({
+              list:new_list
+            })
+        }
+      })
+  },
+  /**
+   * 生命周期函数--监听页面初次渲染完成
+   */
+  onReady: function () {
+
+  },
+
+  /**
+   * 生命周期函数--监听页面显示
+   */
+  onShow: function () {
+
+  },
+
+  /**
+   * 生命周期函数--监听页面隐藏
+   */
+  onHide: function () {
+
+  },
+
+  /**
+   * 生命周期函数--监听页面卸载
+   */
+  onUnload: function () {
+
+  },
+
+  /**
+   * 页面相关事件处理函数--监听用户下拉动作
+   */
+  onPullDownRefresh: function () {
+
+  },
+
+  /**
+   * 用户点击右上角分享
+   */
+  onShareAppMessage: function () {
+
   }
 })

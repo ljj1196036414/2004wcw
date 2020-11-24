@@ -19,3 +19,54 @@
 .usermotto {
   margin-top: 200px;
 }
+/*列表样式*/
+.table-indel{
+  float: left;
+  width: 320px;
+  height: 180px;
+  /* border: 1px solid red; */
+}
+.nav{
+  float: left;
+  margin-top: 60rpx;
+}
+.scroll-view_H{
+  white-space: nowrap;
+}
+.scroll-view-item{
+  height: 100rpx;
+}
+.scroll-view-item_H{
+  display: inline-block;
+  width: 20%;
+  height: 100rpx;
+}
+.nav span{
+    font-size: 20px;
+    margin-left: 10px;
+
+}
+.list{
+    float: left;
+    margin-top: 20px;
+    border: 1px solid blue;
+    padding-bottom:15px;
+}
+.img{
+    width: 150px;
+   height: 150px;
+}
+.table-img{
+  width: 160px;
+  height: 160px;
+  float: left;
+}
+.table-name{
+  width: 100px;
+  height: 120px;
+  float: left;
+}
+
+
+
+
