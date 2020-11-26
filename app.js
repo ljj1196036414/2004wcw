@@ -34,6 +34,9 @@ App({
     })
   },
   globalData: {
-    userInfo: null
+     userInfo: null,
+    
+     apiUrl: 'http://jd.2004.com',
+   //apiUrl: 'https://www.414shop.top',
   }
 })

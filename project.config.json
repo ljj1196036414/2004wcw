@@ -60,9 +60,8 @@
     "miniprogram": {
       "list": [
         {
-          "name": "登录测试",
-          "pathName": "pages/login/login",
-          "query": "",
+          "name": "购物车列表",
+          "pathName": "pages/cartlist/cartlist",
           "scene": null
         }
       ]

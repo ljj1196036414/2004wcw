@@ -1,3 +1,6 @@
+//获取应用实例
+const app = getApp()
+const apihost = app.globalData.apiUrl;  //本地
 // pages/detail/detail.js
 Page({
 
@@ -19,6 +22,56 @@ Page({
       current:e.detail.current
     })
   },
+  //加入购物车
+  buynow1:function(data){
+    //获取表单页面传过来的id
+    let goods_id=data.currentTarget.dataset.goodsid;
+    console.log(goods_id);
+    let token=wx.getStorageSync('key');
+   wx.request({
+     url: apihost+'/api/cart?token='+token,
+     method:'POST',
+     dataType:'json',
+     header:{'content-type':'application/x-www-form-urlencoded'},
+     data:{
+       goods_id:goods_id,
+           },
+     success:function(res){
+      console.log(res);
+     }
+   })
+  },
+  //购物车
+  cart:function(){
+    let token=wx.getStorageSync('key');
+   wx.request({
+     url: apihost+'/api/cartlist?token='+token,
+     method:'POST',
+     dataType:'json',
+     header:{'content-type':'application/x-www-form-urlencoded'},
+     success:function(res){
+      console.log(res);
+     }
+   })
+  },
+  //收藏
+  Collection:function(data){
+   let token=wx.getStorageSync('key');
+   //console.log(token);
+    let goods_id=data.currentTarget.dataset.goodid;
+    wx.request({
+      url: apihost+'/api/collection?token='+token,
+      method:'POST',
+      dataType:"json",
+      header:{'content-type':'application/x-www-form-urlencoded'},
+      data:{
+        goods_id:goods_id
+      },
+      success:function(res){
+        console.log(res);
+      }
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
@@ -29,7 +82,7 @@ Page({
      let access_token=wx.getStorageSync('key');
      //console.log(access_token);
      wx.request({
-      url: 'https://www.414shop.top/api/lest',
+      url: apihost+'/api/lest',
       data:{
         goods_id:id,
         access_token:access_token

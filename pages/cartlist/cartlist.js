@@ -1,8 +1,4 @@
-
-//获取应用实例
-const app = getApp()
-const apihost = app.globalData.apiUrl;  //本地
-// pages/order/order.js
+// pages/cartlist/cartlist.js
 Page({
 
   /**

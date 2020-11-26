@@ -6,7 +6,8 @@
     "pages/cart/cart",
     "pages/detail/detail",
     "pages/order/order",
-    "pages/login/login"
+    "pages/login/login",
+    "pages/cartlist/cartlist"
   ],
   "tabBar": {
     "list": [
@@ -19,7 +20,7 @@
       {
         "iconPath": "/image/my.png",
         "selectedIconPath": "/image/my-select.png",
-        "pagePath": "pages/my/my",
+        "pagePath": "pages/login/login",
         "text": "我的"
       },
       {

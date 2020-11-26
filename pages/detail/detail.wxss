@@ -65,3 +65,4 @@
 .foreach-ch{
     border-bottom: 1px dashed rgb(214, 214, 214);
 }
+/* 收藏 */

@@ -15,13 +15,16 @@
               <text>{{current+1}}/{{good.gallery.length}}</text>
           </view>
     </view>
+    <view>
+    <view class="foreach-ch">商品价格：{{good.shop_price}}<view bindtap="Collection" data-goodid="{{good.goods_id}}" class="iconfont icon-shoucang"></view></view>
+    </view>
 <view class="foreach-ch">商品名称：{{good.goods_name}}</view>
-<view class="foreach-ch">商品价格：{{good.shop_price}}</view>
+
 <!-- <image src="{{good.goods_img}}" class=""></image> -->
 
   <view class="button">
-      <view class='tb4 flexct' bindtap='buynow' data-type='1'>加入购物车</view>
-      <view class='tb4 tb5 flexct' bindtap='buynow' data-type='2'>立刻购买</view>
+      <view class='tb4 flexct' bindtap='buynow1' data-goodsid='{{good.goods_id}}'>加入购物车</view>
+      <view class='tb4 tb5 flexct' bindtap='buynow2' data-type='2'>立刻购买</view>
       <view class="incon">
         <view class="iconfont icon-icon4"></view>
         <view class="incon-ch">首页</view>
@@ -30,7 +33,7 @@
         <view class="iconfont icon-dianhua"></view>
         <view class="incon-ch">客服</view>
     </view>
-    <view  class="incon">
+    <view  class="incon" bindtap='cart'>
       <view class="iconfont icon-gouwuche"></view>
       <view class="incon-ch">购物车</view>
     </view>

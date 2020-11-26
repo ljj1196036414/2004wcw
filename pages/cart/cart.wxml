@@ -1,16 +1,11 @@
-<view wx:for="{{list}}">
+<view wx:for="{{list}}" class="table-indel" catchtap='enterdetail' id="{{list[index].goods_id}}">
+   
+   <view class="table-img">
+      <image class="img" src="{{list[index].goods_img}}"></image>
+   </view>
+   <view class="name">
+      <span class="table-name" >{{list[index].goods_name}}</span>
+      <span class="table-price">$:{{list[index].shop_price}}</span>
+   </view>
  
-  <view class="swiper">
-        <swiper indicator-dots="{{indicatorDots}}"
-          autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
-          <block wx:for="{{background}}" wx:key="*this">
-            <swiper-item>
-              <view class="swiper-item {{item}}"></view>
-            </swiper-item>
-          </block>
-        </swiper>
-  </view>
-  <view class="nav"></view>
-  <view class="test"></view>
- 商品id:{{list[index].goods_id}} 商品型号：{{list[index].goods_sn}}
-</view>
+ </view>

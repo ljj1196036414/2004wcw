@@ -1,3 +1,6 @@
+//获取应用实例
+const app = getApp()
+const apihost = app.globalData.apiUrl;  //本地
 // pages/cart/cart.js
 Page({
 
@@ -21,13 +24,13 @@ Page({
    */
    onLoad: function (options) {
     let access_token=wx.getStorageSync('key');
-    console.log(access_token);
+    //console.log(access_token);
      let _this=this
     _this.getGoodsList();
     wx.request({
-        url: 'https://www.414shop.top/api/leibiao',
+        url: apihost+'/api/leibiao',
         success (res) {
-          //console.log(res);
+          console.log(res);
           //setData  定义一个变量
           _this.setData({
               list:res.data
@@ -59,7 +62,7 @@ onReachBottom: function()
   getGoodsList:function(){
       let _this=this
       wx.request({
-        url:'https://www.414shop.top/api/goodslest',
+        url:apihost+'/api/goodslest',
         data:{
             page: _this.data.page, //分页  页号
             size: _this.data.pagesize
@@ -68,7 +71,7 @@ onReachBottom: function()
         success(res){
          console.log(res);
           let new_list= _this.data.list.concat(res.data.data.data.data)
-          //console.log(new_list);
+          console.log(new_list);
           _this.setData({
               list:new_list
             })

@@ -1,3 +1,6 @@
+//获取应用实例
+const app = getApp()
+const apihost = app.globalData.apiUrl;  //本地
 // pages/page/page.js
 Page({
 
@@ -15,7 +18,7 @@ Page({
         if (res.code) {
           //发起网络请求
           wx.request({
-            url: 'https://www.414shop.top/api/wxlogin',
+            url: apihost+'/api/wxlogin',
             data: {
               code: res.code
             },
@@ -24,8 +27,8 @@ Page({
            // console.log(res);
             // console.log(res);
             wx.setStorageSync('key', res.data.data.token);
-            // let value=wx.getStorageSync('key')
-            // console.log(value);
+             let value=wx.getStorageSync('key')
+             console.log(value);
             let li=wx.setStorage({
               key: 'token',
               success(res){

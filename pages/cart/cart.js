@@ -1,3 +1,6 @@
+//获取应用实例
+const app = getApp()
+const apihost = app.globalData.apiUrl;  //本地
 // pages/cart/cart.js
 Page({
 
@@ -5,12 +8,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    background: ['/image/discount-banner.jpg', '/image/draw-banner.jpg', '/image/nursing-banner.jpg'],
-    indicatorDots: true,
-    vertical: false,
-    autoplay: false,
-    interval: 2000,
-    duration: 500
+   
   },
  
   /**
@@ -18,19 +16,21 @@ Page({
    */
   onLoad: function (options) {
     let _this=this
-    wx.request({
-        url: 'https://www.414shop.top/api/leibiao',
-        success (res) {
-          console.log(res);
-          //setData  定义一个变量
-          _this.setData({
-              list:res.data
-          })  
-        }
+    let token=wx.getStorageSync('key');
+   wx.request({
+     url: apihost+'/api/cartlist?token='+token,
+     method:'POST',
+     dataType:'json',
+     header:{'content-type':'application/x-www-form-urlencoded'},
+     success:function(res){
+      //console.log(res);
+      let new_list= res.data.data
+      //console.log(new_list);
+      _this.setData({
+        list:new_list
       })
-    _this.setData({
-      swiper:data
-    })
+     }
+   })
     },
 
   /**
