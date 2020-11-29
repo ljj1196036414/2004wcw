@@ -8,7 +8,10 @@ Page({
    * 页面的初始数据
    */
   data: {
-   
+    isSelectAll:false,
+    list:[],
+    totalAmount:0,
+    selectAll:false,
   },
  
   /**
@@ -32,7 +35,25 @@ Page({
      }
    })
     },
-
+//复选框
+selectAll:function(){
+  let list= this.data.list;
+  let total=0;
+  let all= !this.data.selectAll;
+  list.forEach((item)=>{
+    if(all){
+      item.checked=true
+      total +=item.goods_num*item.shop_price
+    }else{
+      item.checked=false
+    }
+  })
+  this.setData({
+    list:list,
+    selectAll:all,
+    totalAmount:total
+  })
+},
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

@@ -1,11 +1,39 @@
-<view wx:for="{{list}}" class="table-indel" catchtap='enterdetail' id="{{list[index].goods_id}}">
-   
-   <view class="table-img">
-      <image class="img" src="{{list[index].goods_img}}"></image>
+<view class="page-box">
+   <!-- 头部开始 -->
+   <view class="cart-top">
+      <view>共一件商品</view>
+      <view><a>删除</a></view>
    </view>
-   <view class="name">
-      <span class="table-name" >{{list[index].goods_name}}</span>
-      <span class="table-price">$:{{list[index].shop_price}}</span>
+
+   <!-- 头部结束 -->
+   <!-- 列表开始 -->
+   <view class="cart-list"  wx:for="{{list}}">
+      <checkbox-group>
+        <checkbox value="1" checked="{{item.checked}}"> </checkbox>
+      </checkbox-group>
+      <view class="img"><image  src="{{list[index].goods_img}}"></image></view>
+      <view class="goods-info"> 
+         <view class="goods-name">{{list[index].goods_name}}</view>
+         <view class="goods-brand">{{list[index].shop_price}}</view>
+         <view class="goods-price">
+             <view class="price"> {{list[index].shop_price}}</view>
+             <view class="number">
+                  <view class="decr">－</view>
+                  <input value="1"/>
+                  <view class="incr">＋</view>
+              </view>
+         </view>
+      </view>
    </view>
- 
- </view>
+   <!-- 列表结束 -->
+   <!-- 底部开始 -->
+   <view class="cart-total">
+      <checkbox-group bindchange="selectAll">
+        <checkbox value="1" checked="{{isSelectAll}}"  />
+        <text>全选</text>
+      </checkbox-group>
+      <view class="total-price">总价${{totalAmount}}</view>
+      <view class="btn-checkout">去结算</view>
+   </view>
+   <!-- 底部结束 -->
+</view>

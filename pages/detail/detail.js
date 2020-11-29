@@ -37,22 +37,19 @@ Page({
        goods_id:goods_id,
            },
      success:function(res){
-      console.log(res);
+      wx.showToast({
+        title: '加入购物车成功',
+        icon: 'success',
+        duration: 2000
+      })
      }
    })
   },
   //购物车
   cart:function(){
-    let token=wx.getStorageSync('key');
-   wx.request({
-     url: apihost+'/api/cartlist?token='+token,
-     method:'POST',
-     dataType:'json',
-     header:{'content-type':'application/x-www-form-urlencoded'},
-     success:function(res){
-      console.log(res);
-     }
-   })
+    wx.navigateTo({
+      url:'/pages/cart/cart',
+    })
   },
   //收藏
   Collection:function(data){

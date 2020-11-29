@@ -1,72 +1,113 @@
-/**index.wxss**/
-.userinfo {
+/* 头部 */
+.cart-top{
   display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.userinfo-avatar {
-  width: 128rpx;
-  height: 128rpx;
+  justify-content: space-between;
   margin: 20rpx;
-  border-radius: 50%;
+  background-color: #eeeeee;
+  height: 70rpx;
+ line-height: 70rpx;
 }
-
-.userinfo-nickname {
-  color: #aaa;
+.top-checkout{
+  width: 95%;
+  height: 0.5%;
+  padding-left: 5px;
+  display: flex;
+  justify-content: space-between;
 }
-
-.usermotto {
-  margin-top: 200px;
+/* 列表 */
+.cart-list{
+  height: 200rpx;
+  width: 99%;
+  display: flex;
+  padding: 5px;
+  border-bottom: 1px solid #eeeeee;
+  margin-bottom: 10px;
 }
-/*列表样式*/
-.table-indel{
-  float: left;
-  width: 320px;
-  height: 150px;
-  border-bottom: 1px solid rgb(204, 204, 204);
+/* 图片 */
+.cart-list .img image{
+  width: 150rpx;
+  height: 150rpx;
+  /* border: 1px solid red; */
+  margin-top: 25rpx;
 }
-.nav{
-  float: left;
-  margin-top: 60rpx;
+/* 复选框 */
+.cart-list checkbox{
+  line-height: 200rpx;
 }
-.scroll-view_H{
-  white-space: nowrap;
+/* 商品名称 */
+.cart-list .goods-name{
+   margin-top: 25rpx;
+   display: flex;
+   width: 500rpx;
+   height: 50rpx;
+   font-size: 13px;
+   /* border: 1px solid red; */
 }
-.scroll-view-item{
-  height: 100rpx;
+/* 商品品牌 */
+.cart-list .goods-info .goods-brand{
+   margin-top: 5rpx;
+   width: 500rpx;
+   display: flex;
+   height: 50rpx;
+   font-size: 13px;
+   /* border: 1px solid red; */
 }
-.scroll-view-item_H{
-  display: inline-block;
-  width: 20%;
-  height: 100rpx;
+/* 商品价格框 */
+.cart-list .goods-info .goods-price{
+  width: 500rpx;
+  display: flex;
+ 
 }
-.nav span{
-    font-size: 20px;
-    margin-left: 10px;
-
+/* 商品价格 */
+.cart-list .goods-info .goods-price .price{
+  margin-top: 5rpx;
+  width: 200rpx;
+  display: flex;
+  height: 50rpx;
+  font-size: 13px;
+  /* border: 1px solid red; */
 }
-.list{
-    float: left;
-    margin-top: 20px;
-    border: 1px solid blue;
-    padding-bottom:15px;
+/* 商品框 */
+.cart-list .goods-info .number{
+  width: 300rpx;
+  margin-left: 150rpx;
+  display: flex;
+  border-radius: 5px;
+  border: 1px solid #eeee;
 }
-.img{
-    width: 150px;
-   height: 150px;
+/* ＋ */
+.cart-list .goods-info .goods-price .number .decr{
+  border-right: 1px solid #eeee;
+  display: flex;
 }
-.table-img{
-  width: 160px;
-  height: 160px;
-  float: left;
+/* 文本框 */
+.cart-list .goods-info .goods-price .number input{
+  text-align: center;
+  height: 100%;
+  display: flex;
 }
-.table-name{
-  width: 100px;
-  height: 120px;
-  float: left;
+/* － */
+.cart-list .goods-info .goods-price .number .incr{
+  border-left: 1px solid #eeee;
+  display: flex;
 }
-
-
-
+/* 底部 */
+.cart-total{
+  width: 98%;
+  position: fixed;
+  bottom: 5px;
+  display: flex;
+  height: 77rpx;
+  background-color: #eeeeee;
+  line-height: 77rpx;
+  justify-content: space-between;
+}
+.btn-checkout{
+  margin-left: 100rpx;
+  background-color: #ffcc00;
+  height: 60rpx;
+  line-height: 60rpx;
+  text-align: center;
+  padding: 10rpx 30rpx;
+}
 
